@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Eye, EyeOff } from 'lucide-react'; // Import eye icons
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
-  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   // Validate email format
   const validateEmail = (email) => {
-    return /^[a-zA-Z0-9._%+-]+@(gmail\.com|outlook\.com)$/.test(email);
+    return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
   };
 
   const handleSubmit = (e) => {
@@ -21,26 +20,26 @@ const SignIn = () => {
 
     // Validate email
     if (!email) {
-      setEmailError('This field is required.');
+      setEmailError("This field is required.");
       isValid = false;
     } else if (!validateEmail(email)) {
-      setEmailError('Invalid email.');
+      setEmailError("Invalid email.");
       isValid = false;
     } else {
-      setEmailError('');
+      setEmailError("");
     }
 
     // Validate password
     if (!password) {
-      setPasswordError('This field is required.');
+      setPasswordError("This field is required.");
       isValid = false;
     } else {
-      setPasswordError('');
+      setPasswordError("");
     }
 
     // If all fields are valid, proceed with sign-in logic
     if (isValid) {
-      console.log('Signing in with:', email, password);
+      console.log("Signing in with:", email, password);
       // Add your sign-in logic here
     }
   };
@@ -58,24 +57,29 @@ const SignIn = () => {
               type="email"
               id="email"
               className={`w-full px-3 py-2 border rounded-lg focus:outline-none ${
-                emailError ? 'border-red-500' : 'border-gray-300'
+                emailError ? "border-red-500" : "border-gray-300"
               }`}
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
-            {emailError && <p className="text-red-500 text-sm mt-1">{emailError}</p>}
+            {emailError && (
+              <p className="text-red-500 text-sm mt-1">{emailError}</p>
+            )}
           </div>
           <div className="mb-6 relative">
-            <label className="block text-sm font-medium mb-2" htmlFor="password">
+            <label
+              className="block text-sm font-medium mb-2"
+              htmlFor="password"
+            >
               Password
             </label>
             <div className="relative">
               <input
-                type={showPassword ? 'text' : 'password'}
+                type={showPassword ? "text" : "password"}
                 id="password"
                 className={`w-full px-3 py-2 border rounded-lg focus:outline-none ${
-                  passwordError ? 'border-red-500' : 'border-gray-300'
+                  passwordError ? "border-red-500" : "border-gray-300"
                 } pr-10`}
                 placeholder="Enter your password"
                 value={password}
@@ -85,11 +89,11 @@ const SignIn = () => {
                 type="button"
                 className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600"
                 onClick={() => setShowPassword(!showPassword)}
-              >
-                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-              </button>
+              ></button>
             </div>
-            {passwordError && <p className="text-red-500 text-sm mt-1">{passwordError}</p>}
+            {passwordError && (
+              <p className="text-red-500 text-sm mt-1">{passwordError}</p>
+            )}
           </div>
           <button
             type="submit"
@@ -102,7 +106,7 @@ const SignIn = () => {
           <a
             href="forgot-password"
             className="text-sm text-blue-500 hover:underline"
-            onClick={() => navigate('/forgot-password')}
+            onClick={() => navigate("/forgot-password")}
           >
             Forgot Password?
           </a>
@@ -112,7 +116,7 @@ const SignIn = () => {
           <a
             href="sign-up"
             className="text-sm text-blue-500 hover:underline"
-            onClick={() => navigate('/sign-up')}
+            onClick={() => navigate("/sign-up")}
           >
             Sign Up
           </a>
