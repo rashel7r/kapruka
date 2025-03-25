@@ -1,6 +1,6 @@
 import React from "react";
 import {Routes, Route} from "react-router";
-import Home from "./routes/Home";
+import Home from "./routes/Home/Home";
 import Events from "./routes/Events";
 import Footer from "./Components/Footer/Footer";
 import Navbar from "./Components/NavBar/NavBar";

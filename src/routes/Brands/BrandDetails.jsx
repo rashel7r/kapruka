@@ -23,7 +23,18 @@ const BrandDetails = () => {
   const selectedBrand = brands.find((brand) => brand.name === name);
 
   if (!selectedBrand) {
-    return <div className="flex justify-center items-center h-screen text-red-500 text-lg">Brand not found!</div>;
+    return (
+      <div
+        className="flex justify-center items-center h-screen text-red-500 text-lg"
+        style={{
+          fontFamily: "'Poppins', sans-serif",
+          fontOpticalSizing: "auto",
+          fontWeight: 400,
+        }}
+      >
+        Brand not found!
+      </div>
+    );
   }
 
   const renderStars = (rating) => {
@@ -39,21 +50,42 @@ const BrandDetails = () => {
   };
 
   return (
-    <div className="bg-white min-h-screen px-4 py-8 md:px-16">
-      <h2 className="text-lg md:text-2xl font-semibold text-[#2D2D2D] mb-6 text-center">
+    <div
+      className="bg-white min-h-screen px-4 py-8 md:px-16"
+      style={{
+        fontFamily: "'Poppins', sans-serif",
+        fontOpticalSizing: "auto",
+        fontWeight: 400,
+      }}
+    >
+      {/* Brand Name Header */}
+      <h2 className="text-lg md:text-2xl font-semibold text-[#2D2D2D] mb-6 text-left">
         <span className="border-l-4 border-[#A3FE00] pl-2">{selectedBrand.name}</span>
       </h2>
 
-      <div className="bg-white shadow-md border border-[#A3FE00] rounded-md p-6 flex flex-col items-center max-w-xs w-full mx-auto md:max-w-md md:p-8">
-        <img
-          src={selectedBrand.logo}
-          alt={selectedBrand.name}
-          className="h-24 md:h-32 mb-4 object-contain"
-        />
-        <h3 className="text-base md:text-lg font-semibold text-[#2D2D2D] mb-4">{selectedBrand.name}</h3>
-        <p className="text-xs md:text-sm text-[#2D2D2D] text-center">{selectedBrand.description}</p>
+      {/* Brand Details Card */}
+      <div className="bg-white rounded-md p-6 flex flex-col md:flex-row items-center max-w-3xl mx-auto md:max-w-full">
+        {/* Brand Logo */}
+        <div className="flex items-center md:w-1/3 justify-center mb-4 md:mb-0">
+          <img
+            src={selectedBrand.logo}
+            alt={selectedBrand.name}
+            className="h-24 md:h-32 object-contain"
+          />
+        </div>
+
+        {/* Brand Description */}
+        <div className="md:w-2/3 px-4 text-left">
+          <h3 className="text-base md:text-lg font-semibold text-[#2D2D2D] mb-4">
+            {selectedBrand.name}
+          </h3>
+          <p className="text-xs md:text-sm text-[#2D2D2D] mb-4">
+            {selectedBrand.description}
+          </p>
+        </div>
       </div>
 
+      {/* Voting Stats */}
       <div className="text-center mt-6 px-4 md:px-0">
         <p className="text-[#2D2D2D] font-semibold text-sm md:text-lg">
           User Votes: {renderStars(Math.round(selectedBrand.votes))}
