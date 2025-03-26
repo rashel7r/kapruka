@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; 
+import { motion } from 'framer-motion';
 import logo from './logo.png';
-import { FaGift } from 'react-icons/fa';
-
 import { 
   FaSearch, 
   FaShoppingCart, 
@@ -12,11 +11,11 @@ import {
   FaTags, 
   FaCalendarAlt, 
   FaHeart,
-  FaNetworkWired 
+  FaNetworkWired, 
+  FaGift
 } from 'react-icons/fa';
 
 function Navbar() {
-  const [isHovered, setIsHovered] = useState(null);
   const [showCategories, setShowCategories] = useState(false);
 
   return (
@@ -42,24 +41,27 @@ function Navbar() {
           </div>
 
           <Link to="/cart"> 
-            <div className="p-2 border-2 border-white rounded-full bg-white text-[#1D372E] mr-2">
+            <motion.div 
+              whileHover={{ scale: 1.1 }} transition={{ duration: 0.3 }}
+              className="p-2 border-2 border-white rounded-full bg-white text-[#1D372E] mr-2">
               <FaShoppingCart className="text-[15px] cursor-pointer" title="Cart" />
-            </div>
+            </motion.div>
           </Link>
 
           <Link to="/orders"> 
-            <div className="p-2 border-2 border-white rounded-full bg-white text-[#1D372E] mr-2">
-              <FaClipboardList 
-                className="text-[15px] cursor-pointer" 
-                title="Track Orders" 
-              />
-            </div>
+            <motion.div 
+              whileHover={{ scale: 1.1 }} transition={{ duration: 0.3 }}
+              className="p-2 border-2 border-white rounded-full bg-white text-[#1D372E] mr-2">
+              <FaClipboardList className="text-[15px] cursor-pointer" title="Track Orders" />
+            </motion.div>
           </Link>
 
           <Link to="/profile"> 
-            <div className="p-2 border-2 border-white rounded-full bg-white text-[#1D372E]">
+            <motion.div 
+              whileHover={{ scale: 1.1 }} transition={{ duration: 0.3 }}
+              className="p-2 border-2 border-white rounded-full bg-white text-[#1D372E]">
               <FaUser className="text-[15px] cursor-pointer" title="Me" />
-            </div>
+            </motion.div>
           </Link>
         </div>
       </div>
@@ -67,90 +69,66 @@ function Navbar() {
       {/* Bottom bar */}
       <div className="bg-[#F4F4F4] text-[#000000] px-6 py-2 flex items-center space-x-24 text-sm overflow-x-auto mt-[60px] font-poppins">
         
-        <button
-          className="flex items-center space-x-2 bg-[#5CAF90] text-white text-[13.33px] px-4 py-2 rounded hover:bg-[#1D372E] "
-          onClick={() => setShowCategories(!showCategories)}
-        >
-          
+        <button className="flex items-center space-x-2 bg-[#5CAF90] text-white text-[13.33px] px-4 py-2 rounded hover:bg-[#1D372E]" onClick={() => setShowCategories(!showCategories)}>
           <span>All Categories</span>
           <span className="text-xm">▼</span>
         </button>
 
-        <div
-          className="flex items-center space-x-2 bg-[#5CAF90] text-white text-[13.33px] px-4 py-2 rounded-[24px] hover:bg-[#1D372E] "
-          onMouseEnter={() => setIsHovered('offers')} 
-          onMouseLeave={() => setIsHovered(null)}
-        >
-          <span className="text-[13.33px] text-white"><FaGift /></span>
-          <span className="text-[13.33px]">Seasonal Offers</span>
+        {/* Seasonal Offers - Always Dancing (Wiggling Left & Right) */}
+        <div className="flex items-center space-x-2 bg-[#5CAF90] text-white text-[13.33px] px-4 py-2 rounded-[24px] hover:bg-[#1D372E]">
+          <motion.span animate={{ rotate: [-10, 10, -10] }} transition={{ repeat: Infinity, duration: 0.5, ease: "easeInOut" }}>
+            <FaGift />
+          </motion.span>
+          <span>Seasonal Offers</span>
         </div>
 
-        <Link to="/rush-delivery"> 
-          <a
-            className="flex items-center space-x-2 "
-            onMouseEnter={() => setIsHovered('rush')}
-            onMouseLeave={() => setIsHovered(null)}
-          >
+        {/* Other Icons with Pulse Effect */}
+        <Link to="/rush-delivery">
+          <motion.div className="flex items-center space-x-2" whileHover={{ scale: 1.1 }} transition={{ duration: 0.3 }}>
             <div className="p-1 border-2 bg-[#FFFFFF] border-[#FFFFFF] center rounded-full">
-            <FaRocket /></div>
-            <span className="text-[13.33px]">Rush delivery</span>
-          </a>
+              <FaRocket />
+            </div>
+            <span>Rush delivery</span>
+          </motion.div>
         </Link>
 
-        <Link to="/sale"> 
-          <a
-            className="flex items-center space-x-2"
-            onMouseEnter={() => setIsHovered('sale')}
-            onMouseLeave={() => setIsHovered(null)}
-          >
+        <Link to="/sale">
+          <motion.div className="flex items-center space-x-2" whileHover={{ scale: 1.1 }} transition={{ duration: 0.3 }}>
             <div className="p-1 border-2 bg-[#FFFFFF] border-[#FFFFFF] center rounded-full">
-            <FaTags /></div>
-            <span className="text-[13.33px]">On Sale</span>
-          </a>
+              <FaTags />
+            </div>
+            <span>On Sale</span>
+          </motion.div>
         </Link>
 
-        <Link to="/events"> 
-          <a
-            className="flex items-center space-x-2"
-            onMouseEnter={() => setIsHovered('events')}
-            onMouseLeave={() => setIsHovered(null)}
-          >
+        <Link to="/events">
+          <motion.div className="flex items-center space-x-2" whileHover={{ scale: 1.1 }} transition={{ duration: 0.3 }}>
             <div className="p-1 border-2 bg-[#FFFFFF] border-[#FFFFFF] center rounded-full">
-            <FaCalendarAlt /></div>
-            <span className="text-[13.33px]">Events</span>
-          </a>
+              <FaCalendarAlt />
+            </div>
+            <span>Events</span>
+          </motion.div>
         </Link>
 
-        <Link to="/brands"> 
-          <a
-            className="flex items-center space-x-2"
-            onMouseEnter={() => setIsHovered('brands')}
-            onMouseLeave={() => setIsHovered(null)}
-          >
+        <Link to="/brands">
+          <motion.div className="flex items-center space-x-2" whileHover={{ scale: 1.1 }} transition={{ duration: 0.3 }}>
             <div className="p-1 border-2 bg-[#FFFFFF] border-[#FFFFFF] center rounded-full">
-            <FaNetworkWired /></div>
-            <span className="text-[13.33px]">Brands</span>
-          </a>
+              <FaNetworkWired />
+            </div>
+            <span>Brands</span>
+          </motion.div>
         </Link>
 
-       <Link to="/foryou">
-         <a
-           className="flex items-center space-x-2"
-           onMouseEnter={() => setIsHovered('foryou')}
-           onMouseLeave={() => setIsHovered(null)}
-        >
-          <div className="p-1 border-2 bg-[#FFFFFF] border-[#FFFFFF] center rounded-full">
-           <FaHeart />
-          </div>
-          <span className="text-[13.33px]">For You</span>
-          </a>
-          </Link>
+        <Link to="/foryou">
+          <motion.div className="flex items-center space-x-2" whileHover={{ scale: 1.1 }} transition={{ duration: 0.3 }}>
+            <div className="p-1 border-2 bg-[#FFFFFF] border-[#FFFFFF] center rounded-full">
+              <FaHeart />
+            </div>
+            <span>For You</span>
+          </motion.div>
+        </Link>
 
       </div>
-
-     
-     
-      
     </>
   );
 }

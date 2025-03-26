@@ -71,43 +71,43 @@ const Brands = () => {
         <span className="text-[#5CAF90]">Asipiya</span>
       </h2>
 
-    {/* Search bar */}
-<div className="flex justify-center mb-6 ml-60">
-  <div className="flex flex-1 max-w-2xl mx-30 font-poppins">
-    <input
-      type="text"
-      placeholder="SEARCH BRANDS"
-      className="w-[400px] px-4 py-2 text-[#000000] text-[13px] rounded-l-md outline-none bg-[#FFFFFF] font-poppins border border-[#E8E8E8]" // Added border here
-    />
-    <button className="bg-[#5CAF90] p-2 w-9 rounded-r-md">
-      <FaSearch className="text-[#FFFFFF]" />
-    </button>
-  </div>
-</div>
+      {/* Search bar */}
+      <div className="flex justify-center mb-6 ml-55">
+        <div className="flex flex-1 max-w-full sm:max-w-2xl px-4">
+          <input
+            type="text"
+            placeholder="SEARCH BRANDS"
+            className="w-full sm:w-[400px] px-4 py-2 text-[#000000] text-[13px] rounded-l-md outline-none bg-[#FFFFFF] font-poppins border border-[#E8E8E8]" // Added responsiveness
+          />
+          <button className="bg-[#5CAF90] p-2 w-9 rounded-r-md">
+            <FaSearch className="text-[#FFFFFF]" />
+          </button>
+        </div>
+      </div>
 
-      <br/>
+      <br />
 
       {/* Brands Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-6">
         {repeatedBrands.map((brand, index) => (
           <Link to={`/brand/${brand.name}`} key={index}>
             <div className="bg-white border border-[#E8E8E8] rounded-md flex flex-col justify-between hover:shadow-lg transition-shadow duration-300 h-full">
               
               {/* Brand Logo */}
-              <div className="p-4 flex justify-center  ">
+              <div className="p-4 flex justify-center">
                 <img
-                  src={brand.logo}
-                  alt={brand.name}
-                  className="h-16 object-contain"
+                 src={brand.logo}
+                 alt={brand.name}
+                 className="h-16 width object-contain border-1 border-[#E8E8E8] "
                 />
               </div>
 
               {/* Brand Name & Description */}
               <div className="px-2 pb-1 flex-1 flex flex-col">
-                <h3 className="text-[16px] font-semibold text-[#1D372E] text-[16px] text-center mb-2">
+                <h3 className="text-[16px] font-semibold text-[#1D372E] text-center mb-2">
                   {brand.name}
                 </h3>
-                <p className="text-[13.33px] text-[#5E5E5E] text-[13.33px] text-center mb-4 flex-grow">
+                <p className="text-[13.33px] text-[#5E5E5E] text-center mb-4 flex-grow">
                   {brand.description.substring(0, 100)}...
                 </p>
               </div>
