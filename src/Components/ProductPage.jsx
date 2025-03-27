@@ -14,7 +14,6 @@ const ProductPage = () => {
   const [quantity, setQuantity] = useState(1);
   const [mainImage, setMainImage] = useState("");
 
-
   useEffect(() => {
     const selectedProduct = products.find((p) => p.id === parseInt(id));
     if (selectedProduct) {
@@ -86,7 +85,7 @@ const ProductPage = () => {
           </div>
 
           {/* Other Images */}
-          <div className="flex space-x-2 overflow-x-auto py-2">
+          <div className="flex justify-center space-x-2 overflow-x-auto py-2">
             <img
               src={product.image}
               alt="Main"
@@ -177,9 +176,7 @@ const ProductPage = () => {
 
           <span
             className={`inline-block ${
-              currentVariant.quantity > 0
-                ? "bg-[#5CAF90]"
-                : "bg-red-600"
+              currentVariant.quantity > 0 ? "bg-[#5CAF90]" : "bg-red-600"
             } px-2 text-white border border-black sm:px-3 py-1 rounded-md text-xs sm:text-sm`}
           >
             {currentVariant.quantity > 0 ? "In Stock" : "Out of Stock"}
@@ -252,7 +249,9 @@ const ProductPage = () => {
 
       {/* Related Products */}
       <div className="mt-8 sm:mt-12">
-        <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-center mb-6">Related <span className="text-[#5CAF90]">Products</span></h2>
+        <h2 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-center mb-6">
+          Related <span className="text-[#5CAF90]">Products</span>
+        </h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 mt-3 sm:mt-4">
           {relatedProducts.map((relatedProduct) => (
             <div
