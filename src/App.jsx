@@ -3,7 +3,7 @@ import {Routes, Route} from "react-router";
 import Home from "./routes/Home/Home";
 import Events from "./routes/Events";
 import Footer from "./Components/Footer/Footer";
-import Navbar from "./Components/NavBar/NavBar";
+import NavBar from "./Components/NavBar/NavBar";
 import Brands from "./routes/Brands/brands";
 import BrandDetails from "./routes/Brands/BrandDetails";
 import SignIn from "./components/SignIn";
@@ -14,7 +14,7 @@ import ResetPassword from "./components/ResetPassword";
 const App = () => {
   return (
     <>
-      <Navbar />
+      <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/events" element={<Events />} />

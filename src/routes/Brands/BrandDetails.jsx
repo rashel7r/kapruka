@@ -1,5 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import Review from "../../Components/NavBar/Review";
 
 // Import product images
 import bloom from './bloom.jpg';
@@ -134,6 +135,9 @@ const BrandDetails = () => {
           </tbody>
         </table>
       </div>
+      <br/>
+      <br/>
+      <Review/>
     </div>
   );
 };

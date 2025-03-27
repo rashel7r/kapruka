@@ -25,7 +25,7 @@ const Home = () => {
       <img 
         src={denim} 
         alt="Top Jeans" 
-        className="w-full h-[410px] object-cover sm:h-[300px] md:h-[350px] lg:h-[410px]" 
+        className="w-full h-[410px] object-cover sm:h-[300px] md:h-[350px] lg:h-[410px] " 
       />
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
       <span className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-widest text-gray-800">

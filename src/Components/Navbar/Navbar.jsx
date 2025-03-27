@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom'; 
 import { motion } from 'framer-motion';
+import CategoryDropdown from '../Navbar/CategoryDropdown';
 import logo from './logo.png';
 import { 
   FaSearch, 
@@ -68,11 +69,8 @@ function Navbar() {
 
       {/* Bottom bar */}
       <div className="bg-[#F4F4F4] text-[#000000] px-6 py-2 flex items-center space-x-24 text-sm overflow-x-auto mt-[60px] font-poppins">
+        <CategoryDropdown />
         
-        <button className="flex items-center space-x-2 bg-[#5CAF90] text-white text-[13.33px] px-4 py-2 rounded hover:bg-[#1D372E]" onClick={() => setShowCategories(!showCategories)}>
-          <span>All Categories</span>
-          <span className="text-xm">▼</span>
-        </button>
 
         {/* Seasonal Offers - Always Dancing (Wiggling Left & Right) */}
         <div className="flex items-center space-x-2 bg-[#5CAF90] text-white text-[13.33px] px-4 py-2 rounded-[24px] hover:bg-[#1D372E]">
