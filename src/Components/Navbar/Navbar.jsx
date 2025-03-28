@@ -1,191 +1,132 @@
 import React, { useState } from 'react';
-import offer from './offer.jpg';
-import events from './events.jpg';
-import delivery from './delivery.webp';
-import sale from './sale.jpg';
-import brands from './brand.jpg';
-import foryou from './foryou.jpg';
+import { Link } from 'react-router-dom'; 
+import { motion } from 'framer-motion';
+import CategoryDropdown from '../Navbar/CategoryDropdown';
+import logo from './logo.png';
 import { 
   FaSearch, 
   FaShoppingCart, 
   FaUser, 
+  FaClipboardList, 
   FaRocket, 
   FaTags, 
   FaCalendarAlt, 
   FaHeart,
-  FaNetworkWired 
+  FaNetworkWired, 
+  FaGift
 } from 'react-icons/fa';
 
 function Navbar() {
-  const [isHovered, setIsHovered] = useState(null); // Manage different hover states
+  const [showCategories, setShowCategories] = useState(false);
 
   return (
     <>
       {/* Top bar */}
-      <div className="fixed top-0 left-0 w-full bg-[#2D2D2D] text-white z-50 shadow-md font-roboto">
-        <div className="flex items-center justify-between px-6 py-3">
+      <div className="fixed top-0 left-0 w-full bg-[#1D372E] text-white z-50 shadow-md font-poppins" style={{ height: '60px' }}>
+        <div className="flex items-center justify-between px-6 h-full">
           {/* Logo */}
-          <div className="flex items-center space-x-4">
-            <div className="text-2xl font-bold cursor-pointer">
-              <span className="text-white">E-</span>
-              <span className="text-[#A3FE00]">COMMERCE</span>
-            </div>
+          <div className="flex items-center ml-6 ">
+            <img src={logo} alt="Logo" className="h-[85px] w-auto" /> 
           </div>
 
           {/* Search bar */}
-          <div className="flex flex-1 max-w-2xl mx-6">
+          <div className="flex flex-1 max-w-2xl mx-30 font-poppins ml-75">
             <input
               type="text"
               placeholder="SEARCH THE ENTIRE STORE..."
-              className="w-full px-4 py-2 text-[#2D2D2D] text-xs rounded-l-md outline-none bg-white font-roboto"
+              className="w-[400px] px-4 py-2 text-[#000000] text-[13px] rounded-l-md outline-none bg-[#FFFFFF] font-poppins"
             />
-            <button className="bg-[#A3FE00] p-3 rounded-r-md">
-              <FaSearch className="text-black" />
+            <button className="bg-[#5CAF90] p-2 w-9 rounded-r-md">
+              <FaSearch className="text-[#FFFFFF]" />
             </button>
           </div>
-          <FaShoppingCart className="text-2xl cursor-pointer" />
-          <FaUser className="text-2xl cursor-pointer" />
+
+          <Link to="/cart"> 
+            <motion.div 
+              whileHover={{ scale: 1.1 }} transition={{ duration: 0.3 }}
+              className="p-2 border-2 border-white rounded-full bg-white text-[#1D372E] mr-2">
+              <FaShoppingCart className="text-[15px] cursor-pointer" title="Cart" />
+            </motion.div>
+          </Link>
+
+          <Link to="/orders"> 
+            <motion.div 
+              whileHover={{ scale: 1.1 }} transition={{ duration: 0.3 }}
+              className="p-2 border-2 border-white rounded-full bg-white text-[#1D372E] mr-2">
+              <FaClipboardList className="text-[15px] cursor-pointer" title="Track Orders" />
+            </motion.div>
+          </Link>
+
+          <Link to="/profile"> 
+            <motion.div 
+              whileHover={{ scale: 1.1 }} transition={{ duration: 0.3 }}
+              className="p-2 border-2 border-white rounded-full bg-white text-[#1D372E]">
+              <FaUser className="text-[15px] cursor-pointer" title="Me" />
+            </motion.div>
+          </Link>
         </div>
       </div>
-   
+
       {/* Bottom bar */}
-      <div className="bg-gray-100 text-gray-800 px-6 py-2 flex items-center space-x-24 text-sm overflow-x-auto mt-[60px] font-roboto">
-        {/* All Categories Button */}
-        <button
-          className="flex items-center space-x-2 bg-[#2D2D2D] text-white text-xs px-4 py-2 rounded hover:bg-[#000000]"
-          onMouseEnter={() => setIsHovered('categories')}
-          onMouseLeave={() => setIsHovered(null)}
-        >
-          <span className="text-xm">☰</span>
-          <span>All Categories</span>
-        </button>
+      <div className="bg-[#F4F4F4] text-[#000000] px-6 py-2 flex items-center space-x-24 text-sm overflow-x-auto mt-[60px] font-poppins">
+        <CategoryDropdown />
+        
 
-        {/* Seasonal Offers Button */}
-        <div
-          className="flex items-center space-x-2"
-          onMouseEnter={() => setIsHovered('offers')} 
-          onMouseLeave={() => setIsHovered(null)}
-        >
-          <span role="img" aria-label="party" className="text-xs">🎁</span>
-          <span className="text-xs">Seasonal Offers</span>
+        {/* Seasonal Offers - Always Dancing (Wiggling Left & Right) */}
+        <div className="flex items-center space-x-2 bg-[#5CAF90] text-white text-[13.33px] px-4 py-2 rounded-[24px] hover:bg-[#1D372E]">
+          <motion.span animate={{ rotate: [-10, 10, -10] }} transition={{ repeat: Infinity, duration: 0.5, ease: "easeInOut" }}>
+            <FaGift />
+          </motion.span>
+          <span>Seasonal Offers</span>
         </div>
 
-        {/* Rush Delivery */}
-        <a
-          href="#"
-          className="flex items-center space-x-2 "
-          onMouseEnter={() => setIsHovered('rush')}
-          onMouseLeave={() => setIsHovered(null)}
-        >
-          <FaRocket />
-          <span className="text-xs">Rush delivery</span>
-        </a>
+        {/* Other Icons with Pulse Effect */}
+        <Link to="/rush-delivery">
+          <motion.div className="flex items-center space-x-2" whileHover={{ scale: 1.1 }} transition={{ duration: 0.3 }}>
+            <div className="p-1 border-2 bg-[#FFFFFF] border-[#FFFFFF] center rounded-full">
+              <FaRocket />
+            </div>
+            <span>Rush delivery</span>
+          </motion.div>
+        </Link>
 
-        {/* On Sale */}
-        <a
-          href="#"
-          className="flex items-center space-x-2 "
-          onMouseEnter={() => setIsHovered('sale')}
-          onMouseLeave={() => setIsHovered(null)}
-        >
-          <FaTags />
-          <span className="text-xs">On Sale</span>
-        </a>
+        <Link to="/sale">
+          <motion.div className="flex items-center space-x-2" whileHover={{ scale: 1.1 }} transition={{ duration: 0.3 }}>
+            <div className="p-1 border-2 bg-[#FFFFFF] border-[#FFFFFF] center rounded-full">
+              <FaTags />
+            </div>
+            <span>On Sale</span>
+          </motion.div>
+        </Link>
 
-        {/* Events */}
-        <a
-          href="#"
-          className="flex items-center space-x-2 "
-          onMouseEnter={() => setIsHovered('events')}
-          onMouseLeave={() => setIsHovered(null)}
-        >
-          <FaCalendarAlt />
-          <span className="text-xs">Events</span>
-        </a>
+        <Link to="/Events">
+          <motion.div className="flex items-center space-x-2" whileHover={{ scale: 1.1 }} transition={{ duration: 0.3 }}>
+            <div className="p-1 border-2 bg-[#FFFFFF] border-[#FFFFFF] center rounded-full">
+              <FaCalendarAlt />
+            </div>
+            <span>Events</span>
+          </motion.div>
+        </Link>
 
-        {/* Brands */}
-        <a
-          href="/brands"
-          className="flex items-center space-x-2 "
-          onMouseEnter={() => setIsHovered('brands')}
-          onMouseLeave={() => setIsHovered(null)}
-        >
-          <FaNetworkWired />
-          <span className="text-xs">Brands</span>
-        </a>
+        <Link to="/brands">
+          <motion.div className="flex items-center space-x-2" whileHover={{ scale: 1.1 }} transition={{ duration: 0.3 }}>
+            <div className="p-1 border-2 bg-[#FFFFFF] border-[#FFFFFF] center rounded-full">
+              <FaNetworkWired />
+            </div>
+            <span>Brands</span>
+          </motion.div>
+        </Link>
 
-        {/* For You */}
-        <a
-          href="#"
-          className="flex items-center space-x-2 "
-          onMouseEnter={() => setIsHovered('foryou')}
-          onMouseLeave={() => setIsHovered(null)}
-        >
-          <FaHeart />
-          <span className="text-xs">For You</span>
-        </a>
+        <Link to="/foryou">
+          <motion.div className="flex items-center space-x-2" whileHover={{ scale: 1.1 }} transition={{ duration: 0.3 }}>
+            <div className="p-1 border-2 bg-[#FFFFFF] border-[#FFFFFF] center rounded-full">
+              <FaHeart />
+            </div>
+            <span>For You</span>
+          </motion.div>
+        </Link>
+
       </div>
-
-      {/* Images below the navbar, appears only when hover */}
-      {isHovered === 'offers' && (
-        <div className="absolute top-[100px] left-[-300px] w-full">
-          <img 
-            src={offer} 
-            alt="Seasonal Offers"
-            className="w-50 h-[250px] mx-auto border-8 border-white"  
-          />
-        </div>
-      )}
-
-      {isHovered === 'rush' && (
-        <div className="absolute top-[100px] left-[-115px] w-full">
-          <img 
-            src={delivery} 
-            alt="Rush Delivery"
-            className="w-35 h-[200px] mx-auto border-8 border-white"
-          />
-        </div>
-      )}
-
-      {isHovered === 'sale' && (
-        <div className="absolute top-[100px] left-[60px] w-full">
-          <img 
-            src={sale} 
-            alt="On Sale"
-            className="w-35 h-[200px] mx-auto border-8 border-white"
-          />
-        </div>
-      )}
-
-      {isHovered === 'events' && (
-        <div className="absolute top-[100px] left-[215px] w-full">
-          <img 
-            src={events} 
-            alt="Events"
-            className="w-35 h-[200px] mx-auto border-8 border-white"
-          />
-        </div>
-      )}
-
-     {isHovered === 'brands' && (
-        <div className="absolute top-[100px] left-[368px] w-full">
-          <img 
-            src={brands} 
-            alt="Brands"
-            className="w-35 h-[200px] mx-auto border-8 border-white"
-          />
-        </div>
-      )}
-
-      {isHovered === 'foryou' && (
-        <div className="absolute top-[100px] left-[527px] w-full">
-          <img 
-            src={foryou} 
-            alt="For You"
-            className="w-35 h-[200px] mx-auto border-8 border-white"
-          />
-        </div>
-      )}
     </>
   );
 }

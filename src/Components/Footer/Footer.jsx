@@ -13,8 +13,8 @@ import {
 const Footer = () => {
   return (
     <footer
-      className="text-white px-4 md:px-6 py-10 md:py-12 "
-      style={{ fontFamily: '"Roboto", sans-serif', backgroundColor: '#2D2D2D' }}
+      className="text-white px-4 md:px-6 py-10 md:py-12"
+      style={{ fontFamily: '"Poppins", sans-serif', backgroundColor: '#1D372E' }}
     >
       {/* Middle Section */}
       <div className="text-center mb-10 px-4">
@@ -22,7 +22,7 @@ const Footer = () => {
         <p className="text-xs md:text-sm font-light text-white mb-4">
           Get New Arrivals and Exclusive Offers in Your Inbox
         </p>
-        <button className="text-xs md:text-sm bg-white hover:bg-white text-[#A3FE00] px-4 md:px-6 py-2 md:py-3 rounded-lg font-medium inline-flex items-center gap-2 transition">
+        <button className="text-xs md:text-sm bg-white hover:bg-white text-[#5CAF90] px-4 md:px-6 py-2 md:py-3 rounded-lg font-medium inline-flex items-center gap-2 transition">
           <FaWhatsapp className="text-base md:text-lg" /> Join Our Whatsapp Channel
         </button>
       </div>
@@ -76,7 +76,7 @@ const Footer = () => {
               )}
               {loc.whatsapp && (
                 <p className="text-xs font-light text-white flex justify-center md:justify-start items-center gap-2 mt-2">
-                  <FaWhatsapp className="text-[#A3FE00]" /> <span>{loc.whatsapp}</span>
+                  <FaWhatsapp className="text-white" /> <span>{loc.whatsapp}</span>
                 </p>
               )}
             </div>

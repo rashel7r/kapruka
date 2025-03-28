@@ -1,9 +1,9 @@
 import React from "react";
-import { Routes, Route } from "react-router";
-import Home from "./routes/Home";
-import Events from "./routes/Events";
+import {Routes, Route} from "react-router";
+import Home from "./routes/Home/Home";
+import Events from "./routes/Events/Events";
 import Footer from "./Components/Footer/Footer";
-import Navbar from "./Components/NavBar/NavBar";
+import NavBar from "./Components/NavBar/NavBar";
 import Brands from "./routes/Brands/brands";
 import BrandDetails from "./routes/Brands/BrandDetails";
 import SignIn from "./components/SignIn";
@@ -16,7 +16,7 @@ import OrderTracking from "./components/OrderTracking";
 const App = () => {
   return (
     <>
-      <Navbar />
+      <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/events" element={<Events />} />
