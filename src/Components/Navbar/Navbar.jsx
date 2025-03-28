@@ -99,7 +99,7 @@ function Navbar() {
           </motion.div>
         </Link>
 
-        <Link to="/events">
+        <Link to="/Events">
           <motion.div className="flex items-center space-x-2" whileHover={{ scale: 1.1 }} transition={{ duration: 0.3 }}>
             <div className="p-1 border-2 bg-[#FFFFFF] border-[#FFFFFF] center rounded-full">
               <FaCalendarAlt />
