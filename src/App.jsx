@@ -1,37 +1,29 @@
-import React from "react";
-import {Routes, Route} from "react-router";
-import Home from "./routes/Home/Home";
-import Events from "./routes/Events/Events";
-import Footer from "./Components/Footer/Footer";
-import NavBar from "./Components/NavBar/NavBar";
-import Brands from "./routes/Brands/brands";
-import BrandDetails from "./routes/Brands/BrandDetails";
-import SignIn from "./components/SignIn";
-import SignUp from "./components/SignUp";
-import ForgotPassword from "./components/ForgotPassword";
-import ResetPassword from "./components/ResetPassword";
-import ProductPage from "./components/ProductPage";
-import OrderTracking from "./components/OrderTracking";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { CartProvider } from './context/CartContext';
+import SeasonalOffers from './pages/SeasonalOffers';
+import RushDelivery from './pages/RushDelivery';
+import Cart from './components/Cart';
+import Profile from './pages/Profile';
+import AboutUs from './pages/AboutUs';
 
-const App = () => {
+function App() {
   return (
-    <>
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/events" element={<Events />} />
-        <Route path="/Brands" element={<Brands />} />
-        <Route path="/brand/:name" element={<BrandDetails />} />
-        <Route path="/sign-in" element={<SignIn />} />
-        <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
-        <Route path="/product-page/:id" element={<ProductPage />} />
-        <Route path="/track-order/:id" element={<OrderTracking />} />
-      </Routes>
-      <Footer />
-    </>
+    <CartProvider>
+      <Router>
+        <div className="App">
+          <Routes>
+            <Route path="/" element={<SeasonalOffers />} />
+            <Route path="/ramadan" element={<SeasonalOffers />} />
+            <Route path="/rush-delivery" element={<RushDelivery />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/about" element={<AboutUs />} />
+          </Routes>
+        </div>
+      </Router>
+    </CartProvider>
   );
-};
+}
 
-export default App;
+export default App; 
