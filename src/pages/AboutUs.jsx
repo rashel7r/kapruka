@@ -9,6 +9,7 @@ import visionImage from '../assets/image-1.jpg';
 import missionImage from '../assets/image-2.jpg';
 import valueImage from '../assets/image-3.jpg';
 
+//About Us Page
 const AboutUs = () => {
   const [loading, setLoading] = useState(true);
 
